@@ -38,6 +38,11 @@ public class Student {
 	public void setSurname(String surname) {
 		this.surname = surname;
 	}
+
+	public String getFullName(){
+		return firstName +  " " + surname;
+	}
+
 	@Override
 	public String toString() {
 		return "Student [gradYear=" + gradYear + ", score=" + score + ", firstName=" + firstName + ", surname="
