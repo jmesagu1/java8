@@ -18,6 +18,6 @@ public class GroupingByExample {
         Map<Integer, List<Student>> map = students.stream()
                 .collect(Collectors.groupingBy(Student::getGradYear));
 
-        System.out.println(map);
+        System.out.println(map.get(2011));
     }
 }

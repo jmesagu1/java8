@@ -14,7 +14,7 @@ public class FunctionExample {
 		}; */
 		
 		Function<String, Integer> countWords = s -> s.split(" ").length;
-		String text = "We are enjoying at Ceiba's devfest";
+		String text = "We are enjoying at Ceiba's meetup";
 		System.out.println(countWords.apply(text));
 	}
 }

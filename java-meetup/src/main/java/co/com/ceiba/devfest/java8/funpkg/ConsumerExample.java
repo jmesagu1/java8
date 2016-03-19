@@ -13,7 +13,7 @@ public class ConsumerExample {
 		}; */
 		
 		Consumer<String> c = s -> System.out.println("Consuming '" + s + "'");
-		c.accept("Ceiba DevFest");
+		c.accept("Ceiba Meetup");
 
 		c.andThen(s -> System.out.println("Done with '" + s + "'!"))
 		 .accept("Java8");
