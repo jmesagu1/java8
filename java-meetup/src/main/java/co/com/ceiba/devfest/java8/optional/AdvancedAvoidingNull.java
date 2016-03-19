@@ -28,7 +28,7 @@ public class AdvancedAvoidingNull {
 		School school = new School();
 		Student student = new Student();
 		student.setFirstName("Jorge");		
-		//country.setCity(city);
+		country.setCity(city);
 		city.setSchool(school);
 		school.setStudent(student);		
 		
