@@ -10,7 +10,13 @@ public class MethodRefStatic {
 							"Green", "Orange", "Blue", 
 							"Yellow", "Purple", "Brown" };
 		List<String> list = Arrays.asList(colors);
-		list.forEach(s -> System.out.println(s));
-		list.forEach(System.out::println);
+		// Simple lambda expression without method-ref
+		list.forEach(s -> MethodRefStatic.print(s));
+		// Method-reference in action
+		list.forEach(MethodRefStatic::print);
+	}
+
+	public static void print(String s) {
+		System.out.println(s);
 	}
 }

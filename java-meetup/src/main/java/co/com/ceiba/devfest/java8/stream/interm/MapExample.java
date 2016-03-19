@@ -11,8 +11,9 @@ public class MapExample {
 		List<Student> students = DataBase.readTxt();
 		
 		students.stream()
-			.mapToInt(s -> s.getGradYear())
+			.mapToDouble(s -> s.getScore())
 			.distinct()
+			.sorted()
 			.forEach(System.out::println);
 	}
 }
