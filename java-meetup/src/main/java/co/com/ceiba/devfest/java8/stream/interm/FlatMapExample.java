@@ -11,9 +11,9 @@ public class FlatMapExample {
 	public static void main(String ... args) {
 		List<Student> students = DataBase.readTxt();
 		students.stream()
-			.flatMap(s -> s.getFirstName().chars().mapToObj(c -> String.valueOf((char) c)))
+			.flatMap(s -> s.getCourses().stream())
 			.distinct()
 			.sorted()
-			.forEach(System.out::print);
+			.forEach(System.out::println);
 	}
 }

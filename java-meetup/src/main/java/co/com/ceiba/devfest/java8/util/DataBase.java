@@ -4,9 +4,11 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import javax.script.ScriptEngine;
@@ -18,12 +20,11 @@ import co.com.ceiba.devfest.java8.model.Student;
 public class DataBase {
 
 	public static List<Student> readTxt(){
-		
-		List<Student> students = new ArrayList<>();
-		
+
+		List<List<String>> courses = readCourses();
 		try (Stream<String> lines = Files.lines(Paths.get("src/main/resources/MOCK_DATA.txt"))){
-					
-			students = 	lines
+
+			List<Student> students = 	lines
 			.parallel()
 			.map(s -> {
 					String [] arra = s.split(";");
@@ -36,11 +37,16 @@ public class DataBase {
 					return student;
 			})					
 			.collect(Collectors.toList());
+
+			IntStream.range(0, 1000)
+					.forEach(i -> students.get(i).setCourses(courses.get(i)));
+			return students;
 			
-		}catch (IOException  e) {
+		} catch (IOException  e) {
 			e.printStackTrace();
+			return new ArrayList<>();
 		}		
-		return students;
+
 	}
 	
 	public static List<Student> readJSON(){
@@ -66,5 +72,21 @@ public class DataBase {
 		}
 		
 		return students;
+	}
+
+	private static List<List<String>> readCourses() {
+		List<List<String>> courses = new ArrayList<>();
+
+		try (Stream<String> lines = Files.lines(Paths.get("src/main/resources/COURSES.txt"))){
+
+			courses = 	lines
+					.parallel()
+					.map(s -> Arrays.asList(s.split(",")))
+					.collect(Collectors.toList());
+
+		} catch (IOException  e) {
+			e.printStackTrace();
+		}
+		return courses;
 	}
 }

@@ -1,5 +1,7 @@
 package co.com.ceiba.devfest.java8.model;
 
+import java.util.List;
+
 public class Student {
 
 	private int gradYear;
@@ -7,6 +9,7 @@ public class Student {
 	private String firstName;
 	private String surname;
 	private int id;
+	private List<String> courses;
 	
 	public int getId() {
 		return id;
@@ -38,6 +41,8 @@ public class Student {
 	public void setSurname(String surname) {
 		this.surname = surname;
 	}
+	public List<String> getCourses() { return courses; }
+	public void setCourses(List<String> courses) { this.courses = courses; }
 
 	public String getFullName(){
 		return firstName +  " " + surname;
