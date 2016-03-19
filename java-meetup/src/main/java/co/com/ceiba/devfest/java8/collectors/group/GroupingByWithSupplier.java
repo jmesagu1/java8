@@ -17,7 +17,7 @@ public class GroupingByWithSupplier {
         Map<Integer, Long> map = students.stream()
                 .collect(Collectors.groupingBy(
                         Student::getGradYear,
-                        () -> new TreeMap<>((i, j) -> -i + j),
+                        () -> new TreeMap<>((i, j) -> j - i),
                         Collectors.counting()
                 ));
 
